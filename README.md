@@ -17,9 +17,23 @@ Please supply your solution as a zip file containing any classes, tests, documen
 
 For testing [Composer](https://getcomposer.org/doc/00-intro.md#using-composer) is required, click on the link and follow installation procedure. I have setup Composer to be used globally.
 
+To install dependencies:
 ```
-composer install
+$ composer install
 ```
+
+To regenerate autoload to include our src:
+```
+$ composer dump-autoload
+```
+
+To run tests:
+```
+$ ./vendor/bin/phpunit tests
+```
+#### Extra Information
+
+New classes created in the src folder will not be found by PHPUnit tests automatically. You will need to regenerate the autoload file.
 
 ## Modules/Packages
 
