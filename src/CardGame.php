@@ -11,6 +11,11 @@
     {
       return $this->deck;
     }
+
+    public function dealCards(){
+      $hand = array_splice($this->deck, 0, 7);
+      return $hand;
+    }
   }
 
 
