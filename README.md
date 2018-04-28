@@ -42,3 +42,26 @@ For this project I used [Composer](https://github.com/composer/composer) as my d
 #### Development Dependencies
 
 - [PHPUnit](https://github.com/sebastianbergmann/phpunit) - Testing Framework
+
+## Versions
+
+### Version 1
+
+- Has a deck with 52 cards
+  - numbered from 1 to 52
+- Deals 7 cards from deck
+  - cards delt are removed from deck
+
+### Version 2
+
+- Deck of 52 cards made from:
+  - 4 suits (Hearts, Clubs, Spades and Diamonds)
+  - 13 cards for each suit (A, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K)
+- Deals 7 cards to 4 players
+
+### Version 3
+
+- Deck of cards are now shuffled into a random order
+ - no cards are in sequence
+- Deals cards in a round robin sequence until each player has 7 cards
+
