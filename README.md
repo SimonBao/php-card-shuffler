@@ -13,4 +13,18 @@ The task is a simple one. Please create a simple command line program that when 
 There is no need to necessarily do this in a visual way (for example, simply proving with a test that your deck is shuffled and that the players do now have seven cards will be sufficient)
 Please supply your solution as a zip file containing any classes, tests, documentation, etc that you have produced.
 
+## Setup
 
+For testing [Composer](https://getcomposer.org/doc/00-intro.md#using-composer) is required, click on the link and follow installation procedure. I have setup Composer to be used globally.
+
+```
+composer install
+```
+
+## Modules/Packages
+
+For this project I used [Composer](https://github.com/composer/composer) as my dependency manager.
+
+#### Development Dependencies
+
+- [PHPUnit](https://github.com/sebastianbergmann/phpunit) - Testing Framework
