@@ -3,6 +3,8 @@
 use PHPUnit\Framework\TestCase;
 
 class CardGameTest extends TestCase{
+  # ------------------ HELPERS ------------------
+
   protected $card_game;
   protected $deck_length;
 
@@ -16,6 +18,13 @@ class CardGameTest extends TestCase{
     return $updatedDeck;
   }
 
+  protected function dealCards(){
+    $dealed_hand = $this->card_game->dealCards();
+    return $dealed_hand;
+  }
+
+  # ------------------ TESTS ------------------
+
   public function testDeckCardCount()
   {
     $this->assertEquals(52, $this->deck_length);
@@ -23,22 +32,23 @@ class CardGameTest extends TestCase{
 
   public function testDealedSevenCards()
   {
-    $dealed_hand_length = sizeof($this->card_game->dealCards());
+    $dealed_hand_length = sizeof($this->dealCards());
     $this->assertEquals(7, $dealed_hand_length);
   }
 
   public function testDealedCardsRemovesSevenFromDeck()
   {
     $this->assertEquals(52, $this->deck_length);
-    $this->card_game->dealCards();
+    $this->dealCards();
     $this->assertEquals(45, $this->updateDeck());
   }
 
   public function testDealedCardsRemovedFromDeck()
   {
-    $cards = $this->card_game->dealCards();
+    $cards = $this->dealCards();
     foreach($cards as $card){
       $this->assertNotContains($card, $this->card_game->getDeck());
     }
   }
+
 }
