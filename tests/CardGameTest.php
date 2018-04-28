@@ -3,8 +3,11 @@
 use PHPUnit\Framework\TestCase;
 
 class CardGameTest extends TestCase{
-  public function testEnvironment()
+
+  public function testDeckCardCount()
   {
-    $this->assertEquals('Hello', CardGame::sayHello());
-  }  
+    $card_game = new CardGame();
+    $deck = $card_game->getDeck();
+    $this->assertEquals(52, sizeof($deck));
+  } 
 }
