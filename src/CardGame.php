@@ -4,7 +4,7 @@
     private $deck;
 
     public function __construct($deck = null){
-      $this->createDeck($deck);
+      $this->setDeck($deck);
     }
 
     public function getDeck(){
@@ -16,7 +16,7 @@
       return $hand;
     }
 
-    private function createDeck($deck){
+    private function setDeck($deck){
       if($deck == null){
         $deck_object = new Deck();
         $deck_of_cards = $deck_object->cards();
