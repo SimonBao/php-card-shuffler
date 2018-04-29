@@ -3,7 +3,18 @@
 use PHPUnit\Framework\TestCase;
 
 class PlayerTest extends TestCase{
-  public function testEnvironment(){
-    $this->assertEquals('Hello', Player::sayHello());
+  
+  # ------------------ HELPERS ------------------
+  protected $player;
+
+  protected function setUp(){
+    $this->player = new Player();
+  }
+
+  # ------------------ TESTS ------------------
+
+  public function testEmptyHand(){
+    $player_hand = $this->player->hand();
+    $this->assertEmpty($player_hand);
   }
 }
