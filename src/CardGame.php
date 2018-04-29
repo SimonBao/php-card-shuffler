@@ -3,12 +3,11 @@
   class CardGame{
     private $deck;
 
-    function __construct(){
-      $this->deck = range(1,52);
+    public function __construct($deck = null){
+      $this->createDeck($deck);
     }
 
-    public function getDeck()
-    {
+    public function getDeck(){
       return $this->deck;
     }
 
@@ -16,6 +15,17 @@
       $hand = array_splice($this->deck, 0, 7);
       return $hand;
     }
+
+    private function createDeck($deck){
+      if($deck == null){
+        $deck_object = new Deck();
+        $deck_of_cards = $deck_object->cards();
+        $this->deck = $deck_of_cards;
+      } else {
+        $this->deck = $deck->cards();
+      } 
+    }
+
   }
 
 
