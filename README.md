@@ -51,6 +51,11 @@ For this project I used [Composer](https://github.com/composer/composer) as my d
   - numbered from 1 to 52
 - Deals 7 cards from deck
   - cards delt are removed from deck
+ 
+Version 1 is completed.
+Working environment/dependencies used:
+  - PHP version 7.2.5
+  - PHPUnit version 7.1.4
 
 ### Version 2
 
