@@ -3,8 +3,23 @@
 use PHPUnit\Framework\TestCase;
 
 class DeckTest extends TestCase{
-  public function testEnvironment()
+
+  # ------------------ HELPERS ------------------
+
+  protected $deck;
+
+  protected function setUp()
   {
-    $this->assertEquals('Hello', Deck::sayHello());
+    $this->deck = new Deck();
   }
+
+  
+
+  # ------------------ TESTS ------------------
+
+  public function testDeckCardCount()
+  {
+    $this->assertEquals(52, sizeof($this->deck->cards()));
+  }
+
 }
