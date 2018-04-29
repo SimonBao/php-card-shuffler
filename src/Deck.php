@@ -2,13 +2,11 @@
   class Deck{
     private $cards;
 
-    function __construct()
-    {
+    function __construct(){
       $this->cards = range(1,52);
     }
 
-    public function cards()
-    {
+    public function cards(){
       return $this->cards;
     }
 

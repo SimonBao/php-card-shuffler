@@ -3,13 +3,11 @@
 use PHPUnit\Framework\TestCase;
 
 class DeckTest extends TestCase{
-
   # ------------------ HELPERS ------------------
 
   protected $deck;
 
-  protected function setUp()
-  {
+  protected function setUp(){
     $this->deck = new Deck();
   }
 
@@ -17,8 +15,7 @@ class DeckTest extends TestCase{
 
   # ------------------ TESTS ------------------
 
-  public function testDeckCardCount()
-  {
+  public function testDeckCardCount(){
     $this->assertEquals(52, sizeof($this->deck->cards()));
   }
 
