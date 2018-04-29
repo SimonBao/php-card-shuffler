@@ -1,7 +1,15 @@
 <?php
   class Deck{
-    public static function sayHello()
+    private $cards;
+
+    function __construct()
     {
-      return 'Hello';
+      $this->cards = range(1,52);
     }
+
+    public function cards()
+    {
+      return $this->cards;
+    }
+
   }
