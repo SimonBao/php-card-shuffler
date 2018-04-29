@@ -1,7 +1,13 @@
 <?php
 
 class Player{
-  public static function sayHello(){
-    return 'Hello';
+  private $hand;
+
+  public function __construct(){
+    $this->hand = [];
+  }
+
+  public function hand(){
+    return $this->hand;
   }
 }
