@@ -17,4 +17,10 @@ class PlayerTest extends TestCase{
     $player_hand = $this->player->hand();
     $this->assertEmpty($player_hand);
   }
+
+  public function testPlayerRecievesCard(){
+    $player = $this->player;
+    $player->obtainCard(array('Hearts', 'Ace'));
+    $this->assertArraySubset([['Hearts', 'Ace']], $player->hand());
+  }
 }
