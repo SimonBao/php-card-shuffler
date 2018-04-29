@@ -3,6 +3,7 @@
 use PHPUnit\Framework\TestCase;
 
 class DeckTest extends TestCase{
+  
   # ------------------ HELPERS ------------------
 
   protected $deck;
@@ -14,7 +15,18 @@ class DeckTest extends TestCase{
     $this->deck_cards = $this->deck->cards();
   }
 
-  
+  private function createCardSuit($suit, $set){
+    $suit_set = [];
+    foreach($set as $card){
+      array_push($suit_set, array($suit, $card));
+    }
+    return $suit_set;
+  }
+
+  private function getCardSection($start, $end){
+    $card_section = array_splice($this->deck_cards, $start, $end);
+    return $card_section;
+  }
 
   # ------------------ TESTS ------------------
 
@@ -48,19 +60,6 @@ class DeckTest extends TestCase{
   public function testDiamondSequence(){
     $diamonds = $this->getCardSection(39,52);
     $this->assertArraySubset($this->createCardSuit("Diamonds", $this->set),$diamonds);
-  }
-
-  private function createCardSuit($suit, $set){
-    $suit_set = [];
-    foreach($set as $card){
-      array_push($suit_set, array($suit, $card));
-    }
-    return $suit_set;
-  }
-
-  private function getCardSection($start, $end){
-    $card_section = array_splice($this->deck_cards, $start, $end);
-    return $card_section;
   }
 
 }
