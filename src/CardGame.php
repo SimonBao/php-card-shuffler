@@ -19,6 +19,13 @@
       return $hand;
     }
 
+    public function dealToAll(){
+      $players = $this->players;
+      foreach($players as $player){
+        $player->obtainCard($this->dealCards());
+      }
+    }
+
     public function playerCount(){
       return sizeof($this->players);
     }
@@ -44,7 +51,6 @@
         $this->players = $players;
       }
     }
-
 
     private function getPlayers($players_needed){
       for($i = 0; $i < $players_needed ; $i++){
