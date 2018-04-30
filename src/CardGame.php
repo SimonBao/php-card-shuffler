@@ -3,7 +3,7 @@
   class CardGame{
     const MAX_PLAYERS = 4;
     private $deck;
-    public $players = [];
+    private $players = [];
 
     public function __construct($deck = null, $players = null){
       $this->setDeck($deck);
