@@ -50,4 +50,8 @@ class CardGameTest extends TestCase{
     }
   }
 
+  public function testCardGameStartsWithFourPlayers(){
+    $game_players = $this->card_game->playerCount();
+    $this->assertEquals(4, $game_players);
+  }
 }
