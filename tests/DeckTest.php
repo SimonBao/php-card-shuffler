@@ -7,12 +7,10 @@ class DeckTest extends TestCase{
   # ------------------ HELPERS ------------------
 
   protected $deck;
-  protected $deck_cards;
   protected $ranks = Deck::CARD_RANKS;
 
   protected function setUp(){
     $this->deck = new Deck();
-    $this->deck_cards = $this->deck->cards();
   }
 
   private function createCardSuit($suit, $ranks){
@@ -24,22 +22,28 @@ class DeckTest extends TestCase{
   }
 
   private function getCardSection($start, $end){
-    $card_section = array_splice($this->deck_cards, $start, $end);
+    $deck_cards = $this->getDeckCards();
+    $card_section = array_splice($deck_cards, $start, $end);
     return $card_section;
+  }
+
+  private function getDeckCards(){
+    $deck_cards = $this->deck->cards();
+    return $deck_cards;
   }
 
   # ------------------ TESTS ------------------
 
   public function testDeckCardCount(){
-    $this->assertEquals(52, sizeof($this->deck_cards));
+    $this->assertEquals(52, sizeof($this->getDeckCards()));
   }
 
   public function testDeckFirstCard(){
-    $this->assertArraySubset(['Hearts', 'Ace'],$this->deck_cards[0]);
+    $this->assertArraySubset(['Hearts', 'Ace'],$this->getDeckCards()[0]);
   }
 
   public function testDeckLastCard(){
-    $this->assertArraySubset(['Diamonds', 'King'],$this->deck_cards[51]);
+    $this->assertArraySubset(['Diamonds', 'King'],$this->getDeckCards()[51]);
   }  
 
   public function testHeartSequence(){
