@@ -1,10 +1,9 @@
 <?php
+
   class Deck{
-    private $cards = [];
     const SUITS = array(
       'Hearts', 'Clubs', 'Spades',
       'Diamonds');
-
     const CARD_RANKS = array(
       'Ace', 'Two', 'Three',
       'Four', 'Five', 'Six',
@@ -12,6 +11,7 @@
       'Ten', 'Jack', 'Queen',
       'King'
     );
+    private $cards = [];
 
     function __construct(){
       $this->buildDeck();

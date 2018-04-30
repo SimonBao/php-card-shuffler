@@ -1,10 +1,9 @@
 <?php
 
 class Player{
-  private $hand;
+  private $hand = [];
 
   public function __construct(){
-    $this->hand = [];
   }
 
   public function hand(){
