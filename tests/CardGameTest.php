@@ -27,9 +27,9 @@ class CardGameTest extends TestCase{
   }
 
   private function mockAllPlayers(){
-    $maximum_players = CardGame::MAX_PLAYERS;
+    $players_needed = CardGame::PLAYERS_NEEDED;
     $mock_players = [];
-    for($i = 0; $i < $maximum_players ; $i++){
+    for($i = 0; $i < $players_needed ; $i++){
       $mock_player = $this->mockPlayer();
       array_push($mock_players, $mock_player);
     }
