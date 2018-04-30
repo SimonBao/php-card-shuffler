@@ -46,9 +46,9 @@
       $deck;
       if($deck_object == null){
         $deck_object = $this->createDeck();
-        $deck = $deck_object->cards();
+        $deck = $deck_object->getCards();
       } else {
-        $deck = $deck_object->cards();
+        $deck = $deck_object->getCards();
       }
       $this->setDeck($deck);
     }
@@ -99,7 +99,7 @@
     private function getPlayers($players_needed){
       $needed_players = [];
       for($i = 0; $i < $players_needed ; $i++){
-        array_push($players, new Player());
+        array_push($needed_players, new Player());
       }
       return $needed_players;
     }

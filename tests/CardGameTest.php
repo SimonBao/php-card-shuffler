@@ -16,7 +16,7 @@ class CardGameTest extends TestCase{
 
   private function mockDeck(){
     $mock_deck = $this->createMock(Deck::class);
-    $mock_deck->method('cards')->willReturn(range(1,52));
+    $mock_deck->method('getCards')->willReturn(range(1,52));
     return $mock_deck;
   }
 
