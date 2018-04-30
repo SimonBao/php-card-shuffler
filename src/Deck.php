@@ -5,7 +5,7 @@
       'Hearts', 'Clubs', 'Spades',
       'Diamonds');
 
-    const CARD_SET = array(
+    const CARD_RANKS = array(
       'Ace', 'Two', 'Three',
       'Four', 'Five', 'Six',
       'Seven', 'Eight', 'Nine',
@@ -23,10 +23,10 @@
 
     private function buildDeck(){
       $suits = Deck::SUITS;
-      $set = Deck::CARD_SET;
+      $ranks = Deck::CARD_RANKS;
       foreach($suits as $suit){
-        foreach($set as $card){
-          array_push($this->cards, array($suit, $card));
+        foreach($ranks as $rank){
+          array_push($this->cards, array($suit, $rank));
         }
       }
     }

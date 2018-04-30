@@ -8,19 +8,19 @@ class DeckTest extends TestCase{
 
   protected $deck;
   protected $deck_cards;
-  protected $set = Deck::CARD_SET;
+  protected $ranks = Deck::CARD_RANKS;
 
   protected function setUp(){
     $this->deck = new Deck();
     $this->deck_cards = $this->deck->cards();
   }
 
-  private function createCardSuit($suit, $set){
-    $suit_set = [];
-    foreach($set as $card){
-      array_push($suit_set, array($suit, $card));
+  private function createCardSuit($suit, $ranks){
+    $suit_ranks = [];
+    foreach($ranks as $card){
+      array_push($suit_ranks, array($suit, $card));
     }
-    return $suit_set;
+    return $suit_ranks;
   }
 
   private function getCardSection($start, $end){
@@ -44,22 +44,22 @@ class DeckTest extends TestCase{
 
   public function testHeartSequence(){
     $hearts = $this->getCardSection(0, 13);
-    $this->assertArraySubset($this->createCardSuit("Hearts", $this->set),$hearts);
+    $this->assertArraySubset($this->createCardSuit("Hearts", $this->ranks),$hearts);
   }
 
   public function testClubSequence(){
     $clubs = $this->getCardSection(13, 26);
-    $this->assertArraySubset($this->createCardSuit("Clubs", $this->set),$clubs);
+    $this->assertArraySubset($this->createCardSuit("Clubs", $this->ranks),$clubs);
   }
 
   public function testSpadeSequence(){
     $spades = $this->getCardSection(26,39);
-    $this->assertArraySubset($this->createCardSuit("Spades", $this->set),$spades);
+    $this->assertArraySubset($this->createCardSuit("Spades", $this->ranks),$spades);
   }
 
   public function testDiamondSequence(){
     $diamonds = $this->getCardSection(39,52);
-    $this->assertArraySubset($this->createCardSuit("Diamonds", $this->set),$diamonds);
+    $this->assertArraySubset($this->createCardSuit("Diamonds", $this->ranks),$diamonds);
   }
 
 }
