@@ -14,7 +14,9 @@ class DeckTest extends TestCase{
     'Ten', 'Jack', 'Queen',
     'King'
   );
-  // These are the ranks found in the traditional French card deck.
+  /*
+  These are the ranks found in the traditional French card deck.
+  */
 
   protected function setUp(){
     $this->deck = new Deck();
@@ -22,6 +24,7 @@ class DeckTest extends TestCase{
   /* This is a PHPUnit fixture which runs before each test. This enables creating clean testing environment,
   and enables setting up code which is required by every test.
   */
+  
   private function createCardSuit($suit, $ranks){
     $suit_ranks = [];
     foreach($ranks as $rank){
@@ -63,21 +66,33 @@ class DeckTest extends TestCase{
   public function testDeckFirstCard(){
     $this->assertArraySubset(['Hearts', 'Ace'],$this->getDeckCards()[0]);
   }
+  /*
+  Expects first card to be Ace of Hearts.
+  */
 
   public function testDeckLastCard(){
     $this->assertArraySubset(['Diamonds', 'King'],$this->getDeckCards()[51]);
   }  
+  /*
+  Expects last card to be King of Diamonds.
+  */
 
   public function testHeartSequence(){
     $hearts = $this->getCardSection(0, 13);
     $this->assertArraySubset($this->createCardSuit("Hearts", $this->ranks),$hearts);
   }
-  // Compares the first 13 cards in deck with a sorted hearts suit in ascending order from Ace to King.
+  /*
+  Compares the first 13 cards in deck with a sorted hearts suit in ascending order from Ace to King.
+  */
 
   public function testClubSequence(){
     $clubs = $this->getCardSection(13, 26);
     $this->assertArraySubset($this->createCardSuit("Clubs", $this->ranks),$clubs);
   }
+  /*
+  Expects second section to follow suit and ranking system of traditional French card decks,
+   in ascending order.
+  */
 
   public function testSpadeSequence(){
     $spades = $this->getCardSection(26,39);
