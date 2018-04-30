@@ -64,6 +64,7 @@ Working environment/dependencies used:
   - 13 cards for each suit (A, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K)
 - Deals 7 cards to 4 players
 
+Version 2 is completed.
 ### Version 3
 
 - Deck of cards are now shuffled into a random order
