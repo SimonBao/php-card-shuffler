@@ -1,10 +1,13 @@
 <?php
 
   class CardGame{
+    const MAX_PLAYERS = 4;
     private $deck;
+    public $players = [];
 
-    public function __construct($deck = null){
+    public function __construct($deck = null, $players = null){
       $this->setDeck($deck);
+      $this->setPlayers($players);
     }
 
     public function getDeck(){
@@ -16,6 +19,10 @@
       return $hand;
     }
 
+    public function playerCount(){
+      return sizeof($this->players);
+    }
+
     private function setDeck($deck){
       if($deck == null){
         $deck_object = new Deck();
@@ -24,6 +31,25 @@
       } else {
         $this->deck = $deck->cards();
       } 
+    }
+
+    private function setPlayers($players){
+      $max_players = self::MAX_PLAYERS;
+      if($players == null){
+        $this->getPlayers($max_players);
+      } elseif ($players < $max_players){
+        $players_needed = $max_players - $players;
+        $this->getPlayers($players_needed);
+      } else {
+        $this->players = $players;
+      }
+    }
+
+
+    private function getPlayers($players_needed){
+      for($i = 0; $i < $players_needed ; $i++){
+        array_push($this->players, new Player());
+      }
     }
 
   }
