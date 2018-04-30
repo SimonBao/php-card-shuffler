@@ -1,5 +1,6 @@
 <?php
-
+  require_once('Deck.php');
+  require_once('Player.php');
   class CardGame{
     const PLAYERS_NEEDED = 4;
     private $deck;
@@ -71,14 +72,12 @@
 
     private function setupPlayers($players){
       $minimum_players = self::PLAYERS_NEEDED;
-      $current_players = sizeof($players);
-      $players;
 
-      if($current_players == null){
+      if($players == null){
         $players = $this->getPlayers($minimum_players);
-      } elseif ($current_players < $minimum_players){
-        $players_needed = $minimum_players - $current_players;
-        $players = array_merge($players + $this->getPlayers($players_needed));
+      } elseif (sizeof($players) < $minimum_players){
+        $players_needed = ($minimum_players - sizeof($players));
+        $players = array_merge($players, $this->getPlayers($players_needed));
       } 
       $this->setPlayers($players);
     }
@@ -111,6 +110,3 @@
     */
 
   }
-
-
-
