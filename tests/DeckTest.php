@@ -57,6 +57,19 @@ class DeckTest extends TestCase{
   which is all the cards in the deck as an array.
   */
 
+  private function getDeckLength(){
+    $deck_length = $this->deck->getDeckLength();
+    return $deck_length;
+  }
+  /*
+  Returns numeral count of elements stored in the deck as integer.
+  */
+
+  private function removeCard(){
+    $removed_card = $this->deck->removeCard();
+    return $removed_card;
+  }
+
   # ------------------ TESTS ------------------
 
   public function testDeckCardCount(){
@@ -103,5 +116,23 @@ class DeckTest extends TestCase{
     $diamonds = $this->getCardSection(39,52);
     $this->assertArraySubset($this->createCardSuit("Diamonds", $this->ranks),$diamonds);
   }
+
+  public function testRemoveCard(){
+    $card = $this->removeCard();
+    $deck_length = $this->getDeckLength();
+    $this->assertEquals(51, $deck_length);
+  }
+  /* Expects a card to be removed from deck */
+
+  public function testRemovedCardFromDeck(){
+    $card = $this->removeCard();
+    $cards = $this->getDeckCards();
+    $this->assertNotContains($card, $cards);
+  }
+  /* 
+  Expects removed card to no longer exist in deck.
+  E.g. removing 'Ace of Hearts' through removeCard means
+  'Ace of Hearts' get removed from deck, not any other card.
+  */
 
 }
