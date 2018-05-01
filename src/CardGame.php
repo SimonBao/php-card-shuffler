@@ -16,8 +16,8 @@
     Set deck and players with arguments passed in.
     */
 
-    public function getDeck(){
-      return $this->deck;
+    public function getDeckLength(){
+      return $this->deck->getDeckLength();
     }
     /* 
     Getter method returns instance variable deck.
@@ -43,13 +43,15 @@
     }
     // The playerCount method returns total players in instance as integer.
 
-    private function setupDeck($deck_object){
-      $deck;
-      if($deck_object == null){
-        $deck_object = $this->createDeck();
-        $deck = $deck_object->getCards();
-      } else {
-        $deck = $deck_object->getCards();
+    private function createDeck(){
+      $deck_object = new Deck();
+      return $deck_object;
+    }
+    // creates a new Deck object and returns it
+      }
+    private function setupDeck($deck){
+      if($deck == null){
+        $deck = $this->createDeck();
       }
       $this->setDeck($deck);
     }
