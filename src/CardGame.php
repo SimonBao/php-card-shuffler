@@ -2,6 +2,7 @@
   require_once('Deck.php');
   require_once('Player.php');
   class CardGame{
+    const MAX_CARDS = 7;
     const PLAYERS_NEEDED = 4;
     private $deck;
     private $players = [];
@@ -24,20 +25,26 @@
     Instance variable deck is defined by the setDeck method call at instance construction.
     */ 
 
-    public function dealCards(){
-      $cards = array_splice($this->deck, 0, 7);
-      return $cards;
-    }
-    //The dealCards method returns cards removed from deck as array.
-
     public function dealToAll(){
       $players = $this->players;
-      foreach($players as $player){
-        $player->obtainCard($this->dealCards());
+      $max_cards = self::MAX_CARDS;
+      $delt_cards = [];
+      for($i = 0; $i < $max_cards ; $i++){
+        $cards_delt_to_player = [];
+        foreach($players as $player){
+          $delt_card = $this->dealCard();
+          array_push($cards_delt_to_player, $delt_card);
+          $player->obtainCard($delt_card);
+        }
+        array_push($delt_cards, $cards_delt_to_player);
       }
+      return $delt_cards;
     }
-    // The dealToAll method deals cards to each player individually.
-
+    /*     
+    The dealToAll method deals cards to each player individually.
+    The method works by using the amount of cards required each and the total players.
+    It works by giving each player a single card until each player has the maximum cards.
+    */
     public function playerCount(){
       return sizeof($this->players);
     }
@@ -48,7 +55,28 @@
       return $deck_object;
     }
     // creates a new Deck object and returns it
+
+    private function dealCard(){
+      $card = $this->deck->removeCard();
+      return $card;
+    }
+    //The dealCard method returns a single card removed from deck.
+
+        
+    private function getPlayers($players_needed){
+      $needed_players = [];
+      for($i = 0; $i < $players_needed ; $i++){
+        array_push($needed_players, new Player());
       }
+      return $needed_players;
+    }
+    /*
+    The getPlayers method takes in a single parameter players_needed.
+    The argument defines how many players are needed to fill table.
+    The method creates each player individually and stores them into $needed_players.
+    The method creates players until no more players are needed, then returns the needed_players array.
+    */
+    
     private function setupDeck($deck){
       if($deck == null){
         $deck = $this->createDeck();
@@ -60,12 +88,6 @@
     The method takes in a single parameter deck_object.
     If the argument is null it constructs a new Deck.
     */
-
-    private function createDeck(){
-      $deck_object = new Deck();
-      return $deck_object;
-    }
-    // creates a new Deck object and returns it
 
     private function setDeck($deck){
       $this->deck = $deck;
@@ -95,20 +117,6 @@
     /* 
     The method setPlayers takes in a single parameter.
     The provided argument is stored as instance variable players.
-    */
-    
-    private function getPlayers($players_needed){
-      $needed_players = [];
-      for($i = 0; $i < $players_needed ; $i++){
-        array_push($needed_players, new Player());
-      }
-      return $needed_players;
-    }
-    /*
-    The getPlayers method takes in a single parameter players_needed.
-    The argument defines how many players are needed to fill table.
-    The method creates each player individually and stores them into $needed_players.
-    The method creates players until no more players are needed, then returns the needed_players array.
     */
 
   }
