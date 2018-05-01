@@ -135,4 +135,13 @@ class DeckTest extends TestCase{
   'Ace of Hearts' get removed from deck, not any other card.
   */
 
+  public function testShuffleCards(){
+    $deck = $this->deck;
+    $deck->shuffleCards();
+    $shuffled_cards = $deck->getCards();
+    $unshuffled_deck = new Deck();
+    $unshuffled_cards = $unshuffled_deck->getCards();
+    $this->assertNotEquals($shuffled_cards, $unshuffled_cards);
+  }
+
 }
