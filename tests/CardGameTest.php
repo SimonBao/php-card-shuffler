@@ -71,13 +71,17 @@ class CardGameTest extends TestCase{
   Returns numeral count of elements stored in the deck as integer.
   */
 
-  private function dealCards(){
-    $dealed_hand = $this->card_game->dealCards();
-    return $dealed_hand;
+  private function flattenArray(array $delt_cards){
+      $cards = [];
+      array_walk_recursive($delt_cards, function($card) use (&$cards) { $cards[] = $card; });
+      return $cards;
   }
+
   /* 
-  Calls card_game method dealCards deal seven cards.
-  And return the data back as a array.
+  The flattenArray method accepts an single array parameter.
+  The parameter is then passed into an PHP method which iterates over every element
+  and executes a callback function with $cards referenced.
+  The callback will append the $cards variable with each element $card.
   */
 
   # ------------------ TESTS ------------------
@@ -108,13 +112,18 @@ class CardGameTest extends TestCase{
 
   public function testSevenCardsDealedToEachPlayer(){
     $card_game = $this->card_game;
-    $card_game->dealToAll();
-    $this->assertEquals(24, $this->getDeckLength());
+    $delt_cards_array_md = $card_game->dealToAll();
+    $total_cards = sizeof($this->flattenArray($delt_cards_array_md));
+    $this->assertEquals(28, $total_cards);
   }
   /* 
   Test that each players get delt seven cards.
   If seven cards are delt to four players, 28 cards
   are removed from the deck, resulting in 24 cards left.
+  
+  The multi-dimensional array gets transformed into a flat array.
+  To get total elements in a flat array, sizeof/count can be used to get element count as
+  integer value.
   */
 
   public function testCardGameStartsWithFourPlayers(){
