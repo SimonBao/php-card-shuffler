@@ -45,6 +45,13 @@
     and sets return argument as the removed element
      */
 
+    public function shuffleCards(){
+      $cards = &$this->cards;
+      for( $i = sizeof($cards)-1 ; $i > 0 ; $i-- ){
+        $random_number = mt_rand(0,$i);
+        list($cards[$i], $cards[$random_number]) = array($cards[$random_number], $cards[$i]);
+      }
+    }
     
     private function setupCards(){
       $suits = Deck::SUITS;
