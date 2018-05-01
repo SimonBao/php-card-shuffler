@@ -25,6 +25,7 @@ class CardGameTest extends TestCase{
 
   private function mockDeck(){
     $mock_deck = $this->createMock(Deck::class);
+    $mock_deck->method('getDeckLength')->willReturn(52);
     $mock_deck->method('getCards')->willReturn(range(1,52));
     return $mock_deck;
   }
@@ -63,7 +64,7 @@ class CardGameTest extends TestCase{
   */
 
   private function getDeckLength(){
-    $deck_length = sizeof($this->card_game->getDeck());
+    $deck_length = $this->card_game->getDeckLength();
     return $deck_length;
   }
   /*
@@ -88,22 +89,12 @@ class CardGameTest extends TestCase{
   Expects deck to have 52 elements.
   */
 
-  public function testDealedSevenCards(){
-    $dealed_hand_length = sizeof($this->dealCards());
-    $this->assertEquals(7, $dealed_hand_length);
+  public function testValidAmountOfPlayers(){
+    $players_needed = CardGame::PLAYERS_NEEDED;
+    $total_players = $this->card_game->playerCount();
+    $this->assertEquals($players_needed, $total_players);
   }
-  /*
-  Expects seven cards to be returned by method call.
-  */
-
-  public function testDealedCardsRemovesSevenFromDeck(){
-    $this->assertEquals(52, $this->getDeckLength());
-    $this->dealCards();
-    $this->assertEquals(45, $this->getDeckLength());
-  }
-  /*
-  Expects seven cards to be removed.
-   */
+  /* Expects total players to be the same as the amount of players needed */
 
   public function testDealedCardsRemovedFromDeck(){
     $cards = $this->dealCards();
