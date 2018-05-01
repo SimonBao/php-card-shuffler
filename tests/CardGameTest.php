@@ -24,9 +24,10 @@ class CardGameTest extends TestCase{
   */
 
   private function mockDeck(){
+    $cards = range(1,52);
     $mock_deck = $this->createMock(Deck::class);
     $mock_deck->method('getDeckLength')->willReturn(52);
-    $mock_deck->method('getCards')->willReturn(range(1,52));
+    $mock_deck->method('removeCard')->will($this->onConsecutiveCalls(...$cards));
     return $mock_deck;
   }
   /*
@@ -100,15 +101,6 @@ class CardGameTest extends TestCase{
   }
   /* Expects total players to be the same as the amount of players needed */
 
-  public function testDealedCardsRemovedFromDeck(){
-    $cards = $this->dealCards();
-    foreach($cards as $card){
-      $this->assertNotContains($card, $this->card_game->getDeck());
-    }
-  }
-  /* 
-  Expects cards delt, to no longer be in deck.
-  */
 
   public function testSevenCardsDealedToEachPlayer(){
     $card_game = $this->card_game;
@@ -126,12 +118,31 @@ class CardGameTest extends TestCase{
   integer value.
   */
 
-  public function testCardGameStartsWithFourPlayers(){
-    $game_players = $this->card_game->playerCount();
-    $this->assertEquals(4, $game_players);
+  public function testDealSequence(){
+    $card_game = $this->card_game;
+    $cards_each = CardGame::MAX_CARDS;
+    $total_players = CardGame::PLAYERS_NEEDED;
+    $cards_delt = $card_game->dealToAll();
+    $this->roundRobinSequenceCheck($cards_each, $total_players, $cards_delt);
   }
+
+  private function roundRobinSequenceCheck($cards_each, $total_players, $cards_delt){
+    for( $deal_sequence = 0 ; $deal_sequence < $cards_each ; $deal_sequence++ ){
+      for( $player_position = 0 ; $player_position < $total_players ; $player_position++){
+        $card_in_sequence = ($deal_sequence * 4) + ($player_position + 1);
+        $delt_card = $cards_delt[$deal_sequence][$player_position];
+        $this->assertEquals($card_in_sequence, $delt_card );
+      }
+    }
+  }
+
   /*
-  Expects game to start with four players.
+  The roundRobinSequenceCheck has 3 parameters: $cards_each, $total_players, $cards_delt.
+  The first two arguments are used to calculate what card should be delt based on iteration and
+  number of players.
+
+  (a*4)+(b+1) a in this case is $deal_sequence and b is $player_position
+  first sequence == [1,2,3,4]
+  second sequence == [5,6,7,8]
   */
-  
 }
