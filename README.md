@@ -13,7 +13,17 @@ The task is a simple one. Please create a simple command line program that when 
 There is no need to necessarily do this in a visual way (for example, simply proving with a test that your deck is shuffled and that the players do now have seven cards will be sufficient)
 Please supply your solution as a zip file containing any classes, tests, documentation, etc that you have produced.
 
+## Project Installatin
+
+```
+git clone https://github.com/SimonBao/php-card-shuffler.git
+cd php-card-shuffler
+composer install
+```
+
 ## Setup
+
+The project was built using [PHP](http://php.net/manual/en/), PHP should be installed on most UNIX/LINUX systems, installation on Windows may be required. For any issues PHP related, click on the link to access the offical manual.
 
 For testing [Composer](https://getcomposer.org/doc/00-intro.md#using-composer) is required, click on the link and follow installation procedure. I have setup Composer to be used globally.
 
@@ -72,6 +82,13 @@ Version 2 is completed.
 - Deals cards in a round robin sequence until each player has 7 cards
 
 Version 3 is completed.
+
+### Dev tools
+
+- GitHub
+- BitBucket
+- Visual Studio Code
+- Trello
 
 ## End Notes
 

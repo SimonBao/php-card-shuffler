@@ -58,7 +58,7 @@
     }
     /* 
     The shuffleCards function follows the Fisher Yates shuffling algorithm, which iterates through the cards and swaps them with an,
-    randomly generated position each time. It has been modified for further shuffling.
+    randomly generated position each time. It has been modified for further shuffling. The final version of the fisher yates algoritm was inspired by https://stackoverflow.com/questions/24262147/can-a-seeded-shuffle-be-reversed.
     */
     
     private function createNeighbours($cards, $i, $deck_length){
