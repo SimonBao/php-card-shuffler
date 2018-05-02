@@ -71,3 +71,11 @@ Version 2 is completed.
  - no cards are in sequence
 - Deals cards in a round robin sequence until each player has 7 cards
 
+Version 3 is completed.
+
+## End Notes
+
+The project has been completed and built following my current knowledge of programming practices and principals. Each class includes their individual test suites and any class dependecies have been mocked along with their method calls. 
+
+The project was completed however, I would have liked to create an Card class as I'm not quite happy with how the card system works currently.
+

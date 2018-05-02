@@ -83,6 +83,8 @@ class CardGameTest extends TestCase{
   The parameter is then passed into an PHP method which iterates over every element
   and executes a callback function with $cards referenced.
   The callback will append the $cards variable with each element $card.
+  This elegant method was described in https://stackoverflow.com/questions/1319903/how-to-flatten-a-multidimensional-array.
+  This can also be acheieved through using two loops.
   */
 
   # ------------------ TESTS ------------------
@@ -146,3 +148,4 @@ class CardGameTest extends TestCase{
   second sequence == [5,6,7,8]
   */
 }
+

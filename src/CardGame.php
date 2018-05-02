@@ -1,6 +1,7 @@
 <?php
   require_once('Deck.php');
   require_once('Player.php');
+
   class CardGame{
     const MAX_CARDS = 7;
     const PLAYERS_NEEDED = 4;
@@ -45,23 +46,26 @@
     The method works by using the amount of cards required each and the total players.
     It works by giving each player a single card until each player has the maximum cards.
     */
+
+    public function shuffleCards(){
+      $this->deck->shuffleCards();
+    }
+
     public function playerCount(){
       return sizeof($this->players);
     }
-    // The playerCount method returns total players in instance as integer.
+    /* The playerCount method returns total players in instance as integer. */
 
     private function createDeck(){
       $deck_object = new Deck();
       return $deck_object;
     }
-    // creates a new Deck object and returns it
-
+    /*  creates a new Deck object and returns it */
     private function dealCard(){
       $card = $this->deck->removeCard();
       return $card;
     }
-    //The dealCard method returns a single card removed from deck.
-
+    /* The dealCard method returns a single card removed from deck. */
         
     private function getPlayers($players_needed){
       $needed_players = [];
@@ -92,7 +96,7 @@
     private function setDeck($deck){
       $this->deck = $deck;
     }
-    // The argument gets stored as a instance variable called deck.
+    /* The argument gets stored as a instance variable called deck. */
 
     private function setupPlayers($players){
       $minimum_players = self::PLAYERS_NEEDED;
@@ -120,3 +124,12 @@
     */
 
   }
+
+  $card_game = new CardGame();
+  $card_game->shuffleCards();
+  $card_game->dealToAll();
+  /* 
+  When executed in the command line, the program creates a new game instance.
+  Shuffles the cards.
+  And deals 28 cards total, one at a time in a round robin fashion.
+  */
